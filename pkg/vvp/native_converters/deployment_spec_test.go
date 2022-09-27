@@ -1,12 +1,13 @@
 package nativeconverters
 
 import (
+	"reflect"
+
 	"github.com/fintechstudios/ververica-platform-k8s-operator/api/v1beta2"
-	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager-api"
+	appmanagerapi "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager-api"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"k8s.io/apimachinery/pkg/api/resource"
-	"reflect"
 )
 
 var _ = Describe("DeploymentSpec", func() {

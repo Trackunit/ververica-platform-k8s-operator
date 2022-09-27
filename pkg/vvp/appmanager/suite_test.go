@@ -1,8 +1,9 @@
 package appmanager_test
 
 import (
-	"sigs.k8s.io/controller-runtime/pkg/envtest/printer"
 	"testing"
+
+	"sigs.k8s.io/controller-runtime/pkg/envtest/printer"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

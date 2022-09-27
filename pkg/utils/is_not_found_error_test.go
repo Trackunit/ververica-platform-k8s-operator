@@ -2,6 +2,7 @@ package utils
 
 import (
 	"errors"
+
 	vvperrors "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/errors"
 
 	. "github.com/onsi/ginkgo"

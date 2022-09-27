@@ -3,6 +3,7 @@ package appmanager
 import (
 	"context"
 	"errors"
+
 	"github.com/antihax/optional"
 	appmanagerapi "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager-api"
 	vvperrors "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/errors"
@@ -139,7 +140,7 @@ func (s *eventsService) GetEvents(ctx context.Context, namespaceName string, opt
 	if err != nil {
 		return nil, err
 	}
-	eventsList, res, err := s.client.apiClient.EventResourceApi.GetEventsUsingGET(ctx, namespaceName, &appmanagerapi.GetEventsUsingGETOpts{
+	eventsList, res, err := s.client.apiClient.EventResourceApi.GetEventsUsingGET(ctx, namespaceName, &appmanagerapi.EventResourceApiGetEventsUsingGETOpts{
 		DeploymentId: opts.DeploymentID,
 		JobId:        opts.JobID,
 	})

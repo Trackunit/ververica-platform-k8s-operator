@@ -19,15 +19,17 @@ package controllers
 import (
 	"context"
 	"errors"
-	vvperrors "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/errors"
 	"strconv"
 	"time"
+
+	vvperrors "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/errors"
 
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/annotations"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/utils"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager"
-	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager-api"
+	appmanagerapi "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager-api"
 	"github.com/go-logr/logr"
+
 	// metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -135,8 +137,7 @@ func (r *VpDeploymentTargetReconciler) handleDelete(req ctrl.Request, vpDepTarge
 // +kubebuilder:rbac:groups=ververicaplatform.fintechstudios.com,resources=vpdeploymenttargets,verbs=get;list;watch;create;update;patch;delete
 
 // Reconcile tries to make the current state more like the desired state
-func (r *VpDeploymentTargetReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	ctx := context.Background()
+func (r *VpDeploymentTargetReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	log := r.getLogger(req)
 
 	var vpDepTarget v1beta2.VpDeploymentTarget

@@ -9,12 +9,12 @@ for mapping resources to K8s!
 
 Built for Ververica Platform version `2.x`.
 
-[More about the Ververica Platform](https://www.ververica.com/platform-overview)  
+[More about the Ververica Platform](https://www.ververica.com/platform-overview)
 [Ververica Platform Docs](https://docs.ververica.com/)
 
 ## Supported Resources
 
-Since the resources names of K8s and the Ververica Platform somewhat clash, the 
+Since the resources names of K8s and the Ververica Platform somewhat clash, the
 custom VP Resources will all be prefixed with `Vp`.
 
 * `DeploymentTarget` -> `VpDeploymentTarget`
@@ -58,7 +58,7 @@ To run the binary directly, after building run `./bin/manager`.
 * `--vvp-edition=enterprise` the Ververica Platform Edition to support. See [Editions](#Editions) for more.
 * `--debug` debug mode for logging
 * `--enable-leader-election` to ensure only one manager is active with a multi-replica deployment
-* `--metrics-addr=:8080` address to bind metrics to 
+* `--metrics-addr=:8080` address to bind metrics to
 * `--watch-namespace=all-namespaces` the namespace to watch resources on
 * `[--env-file]` the path to an environment (`.env`) file to be loaded
 
@@ -70,14 +70,14 @@ Specifying in the environment is a good way to integrate with namespaces that ar
 
 **Environment:**
 * `APPMANAGER_API_TOKEN_{NAMESPACE}` a token to use for resources in a specific Ververica Platform namespace, upper-cased
-* `APPMANAGER_API_TOKEN` if no namespace-specific token can be found, this value will be used. 
+* `APPMANAGER_API_TOKEN` if no namespace-specific token can be found, this value will be used.
 
 ## Docker
 
 Images are published to [Docker Hub](https://hub.docker.com/r/fintechstudios/ververica-platform-k8s-operator).
 *  The `latest` tag always refers to the current HEAD in the master branch.
 * Each master commit hash is also tagged and published.
-* Git tags are published with the same tag. 
+* Git tags are published with the same tag.
 
 ## Helm
 
@@ -92,7 +92,7 @@ needs to be installed.
 
 Built using [`kubebuilder`](https://github.com/kubernetes-sigs/kubebuilder).
 [`kind`](https://github.com/kubernetes-sigs/kind) is used for running a local test cluster,
-though something like `minikube` will also do.  
+though something like `minikube` will also do.
 
 More on the design of the controller and its resources can be found
 in [docs/design.md](docs/design.md).
@@ -100,11 +100,11 @@ in [docs/design.md](docs/design.md).
 Also built as a Go module - no vendor files here.
 
 System Pre-requisites:
-- `go` >= `1.14.x`
+- `go` >= `1.19.x`
 - `make` >= `4`
-- `kubebuilder` == [`v2.2.0`](https://github.com/kubernetes-sigs/kubebuilder/releases/tag/v2.2.0)
+- `kubebuilder` == [`v3.7.0`](https://github.com/kubernetes-sigs/kubebuilder/releases/tag/v2.2.0)
 - `docker` >= `19`
-- `kind` >= `0.6.0`
+- `kind` >= `0.16.0`
 
 ### `make` Scripts
 

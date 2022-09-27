@@ -8,7 +8,7 @@ import (
 	mocks "github.com/fintechstudios/ververica-platform-k8s-operator/mocks/vvp/appmanager"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/annotations"
 	appmanagerapi "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager-api"
-	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/native_converters"
+	nativeconverters "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/native_converters"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

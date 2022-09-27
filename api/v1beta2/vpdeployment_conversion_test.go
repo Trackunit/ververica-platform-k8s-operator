@@ -17,6 +17,8 @@ limitations under the License.
 package v1beta2
 
 import (
+	"time"
+
 	"github.com/fintechstudios/ververica-platform-k8s-operator/api/v1beta1"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/annotations"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/utils"
@@ -26,7 +28,6 @@ import (
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/utils/pointer"
-	"time"
 )
 
 // These tests are written in BDD-style using Ginkgo framework. Refer to
@@ -63,7 +64,7 @@ var _ = Describe("VpDeployment conversion", func() {
 								Pods: &VpPodSpec{
 									EnvVars: []core.EnvVar{
 										{
-											Name: "TEST_ENV",
+											Name:  "TEST_ENV",
 											Value: "TEST_VALUE",
 										},
 									},
@@ -108,7 +109,7 @@ var _ = Describe("VpDeployment conversion", func() {
 								Pods: &v1beta1.VpPodSpec{
 									EnvVars: []core.EnvVar{
 										{
-											Name: "TEST_ENV",
+											Name:  "TEST_ENV",
 											Value: "TEST_VALUE",
 										},
 									},

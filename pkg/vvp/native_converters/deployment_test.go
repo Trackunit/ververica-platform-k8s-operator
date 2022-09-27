@@ -1,6 +1,8 @@
 package nativeconverters
 
 import (
+	"time"
+
 	"github.com/fintechstudios/ververica-platform-k8s-operator/api/v1beta2"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/utils"
 	. "github.com/onsi/ginkgo"
@@ -8,7 +10,6 @@ import (
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/utils/pointer"
-	"time"
 )
 
 var _ = Describe("Deployment", func() {
@@ -22,12 +23,12 @@ var _ = Describe("Deployment", func() {
 					Spec: v1beta2.VpDeploymentSpec{
 						Template: &v1beta2.VpDeploymentTemplate{
 							Metadata: &v1beta2.VpDeploymentTemplateMetadata{},
-							Spec:     &v1beta2.VpDeploymentTemplateSpec{
+							Spec: &v1beta2.VpDeploymentTemplateSpec{
 								Kubernetes: &v1beta2.VpKubernetesOptions{
 									Pods: &v1beta2.VpPodSpec{
 										EnvVars: []core.EnvVar{
 											{
-												Name: "TEST_ENV",
+												Name:  "TEST_ENV",
 												Value: "TEST_VALUE",
 											},
 											{

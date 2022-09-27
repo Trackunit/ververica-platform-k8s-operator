@@ -6,7 +6,7 @@ import (
 
 	"github.com/fintechstudios/ververica-platform-k8s-operator/api/v1beta1"
 	mocks "github.com/fintechstudios/ververica-platform-k8s-operator/mocks/vvp/platform"
-	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/native_converters"
+	nativeconverters "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/native_converters"
 	platformapi "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/platform-api"
 
 	. "github.com/onsi/ginkgo"

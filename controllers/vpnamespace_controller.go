@@ -19,13 +19,14 @@ package controllers
 import (
 	"context"
 	"errors"
+	"time"
+
 	vvperrors "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/errors"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/platform"
-	"time"
 
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/polling"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/utils"
-	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/native_converters"
+	nativeconverters "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/native_converters"
 	platformapiclient "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/platform-api"
 
 	"github.com/go-logr/logr"
@@ -196,8 +197,7 @@ func (r *VpNamespaceReconciler) handleDelete(req ctrl.Request) (ctrl.Result, err
 // +kubebuilder:rbac:groups=ververicaplatform.fintechstudios.com,resources=vpnamespaces/status,verbs=get;update;patch
 
 // Reconcile tries to make the current state more like the desired state
-func (r *VpNamespaceReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	ctx := context.Background()
+func (r *VpNamespaceReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	log := r.getLogger(req)
 
 	// otherwise, let's check if it exists in the cluster

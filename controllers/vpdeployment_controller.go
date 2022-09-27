@@ -19,10 +19,11 @@ package controllers
 import (
 	"context"
 	"errors"
-	"github.com/fintechstudios/ververica-platform-k8s-operator/api/v1beta2"
-	vvperrors "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/errors"
 	"strconv"
 	"time"
+
+	"github.com/fintechstudios/ververica-platform-k8s-operator/api/v1beta2"
+	vvperrors "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/errors"
 
 	"github.com/antihax/optional"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/annotations"
@@ -30,7 +31,7 @@ import (
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/utils"
 	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager"
 	appmanagerapi "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/appmanager-api"
-	"github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/native_converters"
+	nativeconverters "github.com/fintechstudios/ververica-platform-k8s-operator/pkg/vvp/native_converters"
 	"github.com/go-logr/logr"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -433,8 +434,7 @@ func (r *VpDeploymentReconciler) handleDelete(req ctrl.Request, vpDeployment v1b
 // +kubebuilder:rbac:groups=core,resources=events/status,verbs=get
 
 // Reconcile is the main reconciliation loop handler
-func (r *VpDeploymentReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	ctx := context.Background()
+func (r *VpDeploymentReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	log := r.getLogger(req)
 
 	var vpDeployment v1beta2.VpDeployment

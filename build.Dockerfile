@@ -1,28 +1,26 @@
 # A development environment in an image to run tests on, build, etc.
-FROM golang:1.14.13-stretch
+FROM golang:1.19-alpine
 
 ENV CGO_ENABLED 0
-ENV GOOS linux
-ENV GOARCH amd64
 ENV GO111MODULE on
 ENV GOPATH /go
-ENV GOLANGCI_LINT_VERSION 1.21.0
-ENV KUBEBUILDER_VERSION 2.2.0
+ENV GOLANGCI_LINT_VERSION 1.49.0
+# 3.7.0
+ENV KUBEBUILDER_VERSION lastest
 ENV KUBEBUILDER_DIR /usr/local/kubebuilder
 ENV PATH ${KUBEBUILDER_DIR}/bin:${PATH}
 
 WORKDIR /workspace
+
+RUN apk add -U curl make
 
 # Install golangci-lint
 RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v${GOLANGCI_LINT_VERSION}
 
 # Install kubebuilder + dependencies
 RUN echo "installing kubebuilder@$KUBEBUILDER_VERSION, kustomize@$KUSTOMIZE_VERSION" && \
-    mkdir -p ${KUBEBUILDER_DIR} && \
-    curl -sL https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${KUBEBUILDER_VERSION}/kubebuilder_${KUBEBUILDER_VERSION}_${GOOS}_${GOARCH}.tar.gz | tar -xz -C ${KUBEBUILDER_DIR} && \
-    DL_NAME=kubebuilder_${KUBEBUILDER_VERSION}_${GOOS}_${GOARCH} && \
-    mv $KUBEBUILDER_DIR/${DL_NAME}/bin $KUBEBUILDER_DIR/bin && \
-    rm -rf ${KUBEBUILDER_DIR}/${DL_NAME}
+    mkdir -p ${KUBEBUILDER_DIR}/bin && \
+    curl -sL -o ${KUBEBUILDER_DIR}/bin/kubebuilder https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)
 
 # Copy the Go Modules manifests
 COPY go.mod go.mod

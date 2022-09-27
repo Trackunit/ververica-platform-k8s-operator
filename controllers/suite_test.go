@@ -17,9 +17,10 @@ limitations under the License.
 package controllers
 
 import (
-	"github.com/fintechstudios/ververica-platform-k8s-operator/api/v1beta2"
 	"path/filepath"
 	"testing"
+
+	"github.com/fintechstudios/ververica-platform-k8s-operator/api/v1beta2"
 
 	"github.com/go-logr/logr"
 	. "github.com/onsi/ginkgo"
